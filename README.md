@@ -5,20 +5,15 @@
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Run back-end serve
 ```
+cd packages/api
+yarn start
+```
+
+### Run front-end app
+```
+cd packages/web
 yarn serve
+go to http://localhost:8080/#/review-notes in browser
 ```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
