@@ -13,7 +13,6 @@ const mutations = {
 		state.users = users;
 	},
 	updateFilter(state, { property, value }) {
-		console.log(property, value)
 		state.filters[property] = value;
 	},
 	clearFilters(state) {
