@@ -11,6 +11,13 @@
       :title="`Create new ${newNoteType}`"
       :text="`Here are fields to create a new ${newNoteType}`" 
     />
+    <button 
+      @click="loadMore" 
+      v-show="notesOffset % 10 === 0"
+      class="load-more"
+    >
+      Load More
+    </button>
   </fragment>
 </template>
 
@@ -24,7 +31,8 @@ import filterNotes from '../utils/filterNotes';
 export default {
   name: 'ReviewNotes',
   computed: mapState({
-    notes: state => filterNotes(state.notes, state.users, state.filters)
+    notes: state => filterNotes(state.notes, state.users, state.filters),
+    notesOffset: state => state.notesOffset
   }),
   data() {
     return {
@@ -40,6 +48,9 @@ export default {
     clickedButton(option) {
       this.newNoteType = option;
       this.showModal = true;
+    },
+    loadMore() {
+      this.$store.dispatch('fetchNotes');
     }
   },
   components: {
@@ -54,6 +65,15 @@ export default {
 <style scoped>
   header {
     padding: 0 1rem;
+    margin-bottom: 1rem;
     display: flex;
+  }
+  .load-more {
+    background: #e6f2fe;
+    display: block;
+    margin: 0.5rem 1rem;
+    width: 100%;
+    padding: 0.5rem 0;
+    border-radius: 3px;
   }
 </style>

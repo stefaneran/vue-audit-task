@@ -13,9 +13,3 @@ export const priority = {
 	medium: 'medium',
 	high: 'high'
 }
-
-export const sectionRef = {
-	"app-independence": "Independence",
-	"app-engagement-information": "Engagement Information",
-	"app-scope": "Scope"
-}

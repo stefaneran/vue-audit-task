@@ -2,7 +2,8 @@ import defaultFilters from './defaultFilters';
 
 const mutations = {
 	saveFetchedNotes(state, payload) {
-		state.notes = payload;
+		state.notes = [...state.notes, ...payload];
+		state.notesOffset += payload.length;
 	},
 	saveFetchedUsers(state, payload) {
 		const users = {};

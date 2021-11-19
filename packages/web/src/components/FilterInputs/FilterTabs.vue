@@ -1,6 +1,17 @@
 <template>
   <div class="input-container">
     <label class="label">{{ label }}</label>
+    <div class="tab-container"> 
+      <button 
+        v-bind:class="{ 'tab-item': true, active: optionValue === value }"
+        v-for="[optionLabel, optionValue] in options"
+        :key="optionLabel"
+        @click="updateFilter($event, optionValue)"
+      >
+        {{ optionLabel }}
+      </button> 
+    </div>
+    <!--
     <v-tabs class="tab-container" :value="getTabIndex(this)">
       <v-tab
         v-bind:class="{ 'tab-item': true, active: optionValue === value }"
@@ -11,10 +22,14 @@
         {{ optionLabel }}
       </v-tab>
     </v-tabs>
+    -->
   </div>
 </template>
 
 <script>
+// Disclaimer: I originally used v-tabs but had issues overriding the CSS styles, 
+// particularly height since it didn't take the "dense" prop like the other inputs, 
+// so I opted for a custom implementation
 export default {
   name: "FilterTabs",
   props: {
@@ -53,7 +68,7 @@ export default {
     border: 2px solid #9caab7;
     border-radius: 3px;
     height: 40px;
-    overflow: hidden;
+    display: flex;
   }
   .tab-item {
     background: #9caab7;

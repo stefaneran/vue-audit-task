@@ -5,7 +5,7 @@
 yarn install
 ```
 
-### Run back-end serve
+### Run back-end server
 ```
 cd packages/api
 yarn start

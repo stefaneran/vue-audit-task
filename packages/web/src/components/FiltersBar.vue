@@ -60,13 +60,15 @@ import FilterTextInput from './FilterInputs/FilterTextInput';
 import FilterTabs from "./FilterInputs/FilterTabs";
 import FilterAutocomplete from './FilterInputs/FilterAutocomplete';
 import FilterDatePicker from './FilterInputs/FilterDatePicker';
-import { type, priority, sectionRef } from "../types";
+import { type, priority } from "../types";
 import getUserOptions from '../utils/getUserOptions'
+import getSectionRefOptions from '../utils/getSectionRefOptions'
 
 export default {
   name: "FiltersBar",
   computed: mapState({
 		userOptions: state => getUserOptions(state.users),
+		sectionOptions: state => getSectionRefOptions(state.notes),
     title: state => state.filters.title,
     type: state => state.filters.type,
     priority: state => state.filters.priority,
@@ -78,8 +80,7 @@ export default {
   data() {
     return {
       types: Object.entries(type),
-      priorities: Object.entries(priority),
-			sectionOptions: Object.entries(sectionRef).map(([key, value]) => ({ text: value, value: key }))
+      priorities: Object.entries(priority)
     };
   },
   methods: {

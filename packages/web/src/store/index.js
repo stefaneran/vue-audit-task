@@ -9,6 +9,8 @@ Vue.use(Vuex)
 
 const initialState = {
 	notes: [],
+	// Used for OFFSET in SQL when loading more data
+	notesOffset: 0,
 	// Users are serialized by ID
 	users: {},
 	filters: { ...defaultFilters }
